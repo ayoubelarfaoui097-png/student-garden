@@ -1,13 +1,9 @@
 Categories:
-  - Calendar & Agenda
-  - Note
   - Science & Education
+  - Time
 License: Apache-2.0
-AuthorName: Ayoub Elarfaoui
-AuthorWebSite: https://github.com/ayoubelarfaoui097-png
 SourceCode: https://github.com/ayoubelarfaoui097-png/student-garden
 IssueTracker: https://github.com/ayoubelarfaoui097-png/student-garden/issues
-Changelog: https://github.com/ayoubelarfaoui097-png/student-garden/releases
 
 AutoName: Student Garden
 
@@ -23,6 +19,6 @@ Builds:
       - yes
 
 AutoUpdateMode: Version
-UpdateCheckMode: Tags ^v[0-9]+\.[0-9]+\.[0-9]+$
+UpdateCheckMode: Tags
 CurrentVersion: 0.7.0
 CurrentVersionCode: 7
