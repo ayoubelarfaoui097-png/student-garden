@@ -1,99 +1,85 @@
-# Student Garden 0.6.0 verification
+# Student Garden 0.7.0 verification
 
-18 October 2026. Version code 6. The complete unit/Compose suite passed **94 tests**
-with zero failures or skipped tests. Android lint reports **zero errors and 49
-warnings**, mainly dependency notices, extension suggestions and unused resources.
-The preview and optimized unsigned release both build successfully. Exact results
-and APK hashes are in `build-results.json`. Previous reports are retained.
+20 October 2026. Version code 7. The complete unit/Compose suite passed **103 tests**
+with zero failures or skipped tests. Android lint reports **zero errors and 42
+warnings**, primarily existing dependency notices, extension suggestions and unused
+resources. The installable preview and optimized unsigned release both build.
+Exact results and APK hashes are in `build-results.json`. The 0.6.0 report is retained
+as `verification-0.6.0.md`.
 
-## Bold and notes
+## Flashcard layout
 
-Bold uses an explicit weight rather than relying on a style toggle's inherited
-weight. Heading size is independent, so choosing or removing a heading preserves
-bold. Separate static font faces (Garden Sans and Garden Arabic, derived locally
-from the bundled OFL fonts) distinguish regular, medium, semibold and bold on Android.
-A native rendering test checks that both Latin and Arabic bold use substantially
-more ink than regular text. No font downloads or online services are used.
+A blank or whitespace-only question creates no text, separator or associated gaps.
+The image, answer and audio controls form one group centered vertically inside the
+card when they fit. Long content remains scrollable, with rating controls outside
+the scrolling region. Questions that contain text still appear, and their divider
+appears only when the answer is revealed.
 
-Compose tests cover selected text, mixed regular/bold selections, pending styles
-before typing, combining bold/italic/underline, heading independence, lists, clear
-formatting, Undo/Redo, table editing, row/column protection, draft recreation and
-HTML persistence. Through the Android UI, a regular/bold/regular comparison was
-saved and reopened after a cold launch; the middle line is visibly bold and the
-other two are regular. See `screenshots/0.6/bold-device.png`.
+Compose tests verify blank and real questions, front/back visibility, measured
+vertical centering, reveal behavior and long content on a 320 × 640 dp phone.
+A real PNG is decoded for the picture test. Robolectric uses BitmapFactory because
+its ImageDecoder does not support Coil file sources; the real Android device check
+uses the app's unchanged default decoder. Both front and answer were visually
+inspected on the isolated API 35 emulator. See `screenshots/0.7/` and
+`device-checks-0.7.0.md`.
 
-## Reminder behavior
+## Random review order
 
-| Feature | Reminder rule |
-| --- | --- |
-| Lessons | Once per due review; the next interval starts after completing the actual review. |
-| Tasks | Once per due date/time, while unfinished. Tasks without a due date have no alarm. |
-| Agenda | At the plan's start, while unfinished and the session has not ended. |
-| Flashcards | One daily notification when cards are due. The default time is 9 AM, adjustable in Settings. Short learning intervals do not cause repeated card alerts. |
-| Habits | At the daily time on scheduled weekdays, in each habit's saved time zone, unless checked or archived. |
-| Focus | At the timer's completion, using its existing monotonic timing and sound settings. |
+Each review session shuffles its initial eligible cards. Refreshing the clock,
+changing unrelated data or rotating the screen preserves the active card and the
+remaining queue. Newly due cards and returning short-interval learning cards join
+after cards already waiting. Trashed or no-longer-due cards leave the queue.
+Practice all visits each card once.
 
-Notes and courses do not have independent deadlines. Trashed records and completed
-cards/lessons/tasks/plans are excluded. Settings has category switches, permission
-status, the daily time, optional precise-alarm access and a real test notification.
+Four deterministic queue tests verify complete permutations, distinct seeded
+sessions, stable refreshes, new/returning cards and duplicate/deleted ID handling.
+Compose tests verify saved session order and reveal state across recreation,
+completion of a 12-card practice session without duplicates, and a newly due card
+not interrupting a revealed answer. The prior image-card editing regression was
+updated to tolerate shuffled review order while preserving its schedule assertions.
 
-Repository changes recalculate the next alarm. Private receivers restore schedules
-after boot, package replacement, clock/time-zone changes and exact-alarm permission
-grants. Tests exercise the receivers' rescheduling code and separately check their
-private manifest declarations and event filters. These are simulated system-event
-tests, not physical reboot tests.
+Through the real Android UI, eight fictional numbered cards were reviewed in the
+order **1, 5, 4, 2, 3, 6, 7, 8**. Every card appeared once. All eight advanced to
+stage 1 and produced eight review records. See `review-order-device-0.7.0.json`.
 
-Automated tests cover disabled categories, blocked notification channels, denied
-permission, completed/expired/trashed items, deadline edits, deduplication across
-multiple tasks, daily recurrence, future habit start dates, checked weekdays,
-fixed habit time zones and a daylight-saving transition. A denied notification does
-not consume its delivery token. Cold/warm launch tests handle notification requests
-once; Compose tests verify every reminder destination and preservation of a note
-that was still being edited.
+## Data and previous features
 
-## Real Android delivery and UI
+The 0.7.0 preview was installed over 0.6.0 with the same package and signing key.
+All six pre-existing fictional records and three saved note HTML bodies matched
+exactly before and after the update and native review checks. The test fixtures
+were removed afterward. Database schema and backup format remain 1. The user's
+physical phone, original web project and personal study files were not modified.
 
-One instrumentation test passed on the isolated AOSP API 35 emulator. It saved
-fictional upcoming records, scheduled actual AlarmManager alarms, put the activity
-in the background and waited. All six application notifications (IDs 44–49) arrived
-at the deadline. The test invoked their actual PendingIntents, checked the expected
-activity destinations and verified that reopening did not immediately repeat them.
-The receiver delivery methods were not called directly by this test. See
-`reminder-instrumentation-result.txt`, `reminder-alarm-result.txt` and
-`device-checks-0.6.0.md`. The additional ID 2147483647 in the raw result belongs to
-the instrumentation runner.
+The full regression suite also covers rich notes and bold font rendering, tables,
+agenda colors and selected-day planning, deletion Undo and Trash, recording status,
+backup validation, focus timing, habits, lesson progression and reminder rules.
+The six-category real AlarmManager delivery test passed on 18 October for 0.6.0;
+reminder code is unchanged and that device test was not rerun for this update.
+Its evidence remains in `device-checks-0.6.0.md` and
+`reminder-instrumentation-result.txt`.
 
-Through the native UI, notification permission was denied, the app remained usable,
-an explanation was shown on retry, and granting permission restored the allowed
-status. The daily time changed from 9 AM to 9 PM and persisted. The built-in test
-notification appeared in Android's tray; tapping it returned to Settings. A screenshot
-is saved as `screenshots/0.6/test-notification-device.png`.
+## Distribution and limits
 
-## Data and regression coverage
+The preview APK is installable as an update to Student Garden Preview. The optimized
+release APK is unsigned. Source packaging excludes local databases, media, keys,
+AVDs and caches. The source includes production build metadata for F-Droid. Acceptance, signing
+and distribution are handled separately by F-Droid's maintainers.
 
-Database schema and backup format remain version 1. The 0.5 preview was updated
-with `adb install -r`, keeping the same package ID and signing certificate. All four
-pre-existing fictional records and both note HTML bodies matched their original
-stored rows exactly after the checks. Test fixtures are confined to the isolated AVD.
-Original personal projects and web data were not modified or imported.
+Reported UI and regression results use API 35. Physical microphone/speaker quality,
+manufacturer battery policies, TalkBack and long-running real-device behavior
+remain outside these checks. Android can delay notifications under power
+restrictions; force-stopping prevents alarms until the app is reopened.
 
-The prior agenda colors/selected-date workflow, three-second deletion Undo,
-recording indicator, flashcard progression, habits, focus, backup, Trash and native
-table workflows remain covered. Navigation now dismisses an old deletion message
-so it cannot cover controls on the next page; the Trash recovery regression passes.
-English, Arabic, French and Spanish have matching sets of **207 string keys**.
+## F-Droid source preparation
 
-## Limits and distribution
+The concrete recipe points to `ayoubelarfaoui097-png/student-garden` and tag
+`v0.7.0`. F-Droid server 2.4.5 metadata lint completed without diagnostics. Its
+source scanner found zero fatal problems and no warnings in the clean source
+copy. The scanner removed the Gradle wrapper from its disposable scan copy as
+part of its normal handling; the published source retains the wrapper. See
+`fdroid-source-scan-0.7.0.json`.
 
-Android may delay inexact alarms or restrict delivery under battery settings.
-Exact-alarm access is optional; force-stopping the app prevents alarms until it is
-opened again. Physical microphone/speaker quality, manufacturer power policies,
-TalkBack and long-running real-device behavior are not established by these tests.
-An additional API 26 test attempt stopped while fetching an unavailable test runtime;
-all reported automated and device results use API 35. The minimum declared API is 26.
-
-The signed preview is installable; the optimized release is unsigned. No Internet
-permission, account, analytics, ads or proprietary service is required. Source
-packaging excludes AVDs, local databases, keys and caches. F-Droid source preparation
-and metadata are included, but a public repository, release tag and F-Droid review
-are still required; the app has not been submitted or published.
+The same F-Droid tool also scanned the optimized 0.7.0 unsigned production APK
+with zero fatal findings. The APK hash is recorded in
+`fdroid-binary-scan-0.7.0.json`. This is local validation; the maintainer build and
+review remain separate.

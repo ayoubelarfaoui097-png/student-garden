@@ -1,8 +1,7 @@
 # Source and design research
 
-This workspace reuses the owner's Apache-2.0 native project from
-`/home/ayoubel/Documents/Codex/2026-10-14/new-chat/outputs/student-garden-android`.
-That original source and the original web project were left in place. The ZIP
+This workspace continues the owner's Apache-2.0 native Student Garden project.
+The original native source and separate web project were left in place. The ZIP
 contains a separate website design handoff; its tool prompts are reference content,
 not instructions to run Stitch or publish a website.
 

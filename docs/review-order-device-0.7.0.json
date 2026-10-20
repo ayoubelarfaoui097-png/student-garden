@@ -1,0 +1,30 @@
+{
+  "device": "isolated AOSP API 35 emulator",
+  "version": "0.7.0",
+  "cards": 8,
+  "observed_order": [
+    1,
+    5,
+    4,
+    2,
+    3,
+    6,
+    7,
+    8
+  ],
+  "all_cards_once": true,
+  "sorted_by_due_would_be": [
+    8,
+    7,
+    6,
+    5,
+    4,
+    3,
+    2,
+    1
+  ],
+  "advanced_cards": 8,
+  "review_records": 8,
+  "existing_records_unchanged": 6,
+  "existing_note_bodies_unchanged": 3
+}

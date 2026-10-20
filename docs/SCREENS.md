@@ -1,4 +1,4 @@
-# Student Garden 0.5.0 screens
+# Student Garden screens
 
 Native Compose renders with fictional test records. The launcher and header use the
 original sapling vectors in `branding/`. These images show actual application controls.
@@ -41,3 +41,9 @@ emulator captures for this release are documented in `device-checks-0.5.0.md`.
 - [Saved regular/bold comparison on Android](screenshots/0.6/bold-device.png)
 - [Real Android notification tray](screenshots/0.6/test-notification-device.png)
 - [Current automated rendering evidence](screenshots/0.6/automated/)
+
+## Version 0.7.0
+
+- [Centered picture with no question](screenshots/0.7/blank-question-front-device.png)
+- [Centered answer and picture without the empty divider](screenshots/0.7/blank-question-answer-device.png)
+- [Observed random review order on Android](review-order-device-0.7.0.json)

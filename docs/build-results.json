@@ -1,7 +1,7 @@
 {
-  "version": "0.6.0",
-  "versionCode": 6,
-  "date": "2026-10-18",
+  "version": "0.7.0",
+  "versionCode": 7,
+  "date": "2026-10-20",
   "command": "./tools/build-local.sh --offline --no-daemon --no-parallel --max-workers=2 -Pkotlin.compiler.execution.strategy=in-process testDebugUnitTest lintDebug assembleDebug assembleRelease",
   "build": "SUCCESS",
   "tests": [
@@ -21,6 +21,13 @@
     },
     {
       "name": "com.jdinohaila.studentgarden.BackupTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.jdinohaila.studentgarden.CardReviewUiTest",
       "tests": "5",
       "failures": "0",
       "errors": "0",
@@ -83,6 +90,13 @@
       "skipped": "0"
     },
     {
+      "name": "com.jdinohaila.studentgarden.ReviewOrderTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
       "name": "com.jdinohaila.studentgarden.StudyRemindersTest",
       "tests": "11",
       "failures": "0",
@@ -97,31 +111,50 @@
       "skipped": "0"
     }
   ],
-  "totalTests": 94,
-  "deviceTests": {
-    "runner": "AndroidJUnitRunner",
-    "tests": 1,
-    "failures": 0,
-    "seconds": 76.509,
-    "api": 35,
-    "categories": [
-      "lessons",
-      "tasks",
-      "agenda",
-      "cards",
-      "habits",
-      "focus"
+  "totalTests": 103,
+  "deviceChecks": {
+    "device": "isolated AOSP API 35 emulator",
+    "version": "0.7.0",
+    "cards": 8,
+    "observed_order": [
+      1,
+      5,
+      4,
+      2,
+      3,
+      6,
+      7,
+      8
     ],
-    "evidence": "reminder-instrumentation-result.txt"
+    "all_cards_once": true,
+    "sorted_by_due_would_be": [
+      8,
+      7,
+      6,
+      5,
+      4,
+      3,
+      2,
+      1
+    ],
+    "advanced_cards": 8,
+    "review_records": 8,
+    "existing_records_unchanged": 6,
+    "existing_note_bodies_unchanged": 3
+  },
+  "previousReminderInstrumentation": {
+    "version": "0.6.0",
+    "date": "2026-10-18",
+    "evidence": "reminder-instrumentation-result.txt",
+    "rerunInThisUpdate": false
   },
   "lint": {
-    "Warning": 49
+    "Warning": 42
   },
   "lintWarningsById": {
     "ApplySharedPref": 2,
     "UnusedAttribute": 1,
     "AndroidGradlePluginVersion": 1,
-    "GradleDependency": 7,
     "NewerVersionAvailable": 5,
     "PluralsCandidate": 1,
     "ObsoleteSdkInt": 1,
@@ -131,14 +164,15 @@
   },
   "artifacts": [
     {
-      "file": "student-garden-0.6.0-preview.apk",
-      "bytes": 24583873,
-      "sha256": "be589e1778a9013aa3e46947deae11dbfd118d7c265c67ee69b77b1f7523e3f0"
+      "file": "student-garden-0.7.0-preview.apk",
+      "bytes": 24600257,
+      "sha256": "e1e51c75f23c69320032bd8cca858afde150358836f08ec1798205c9da7d543f"
     },
     {
-      "file": "student-garden-0.6.0-release-unsigned.apk",
+      "file": "student-garden-0.7.0-release-unsigned.apk",
       "bytes": 4813434,
-      "sha256": "6f5e3522aaecb137f687e2656514060a833e73e439e3f28f8af0fa170530ff14"
+      "sha256": "71bb57b5cb115b56ef67036f3e97c950170587bb3c934cda0e3b8a57edefd1b0"
     }
-  ]
+  ],
+  "previewCertificateSha256": "aafd3b3bb8b582ef393bdc84ea3fa186de43967cbe3e6963c68e69202a1b0835"
 }

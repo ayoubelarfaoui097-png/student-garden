@@ -9,7 +9,7 @@
    on a physical Android device, including screen-off/battery-saver behavior. The app
    explains when Android may delay an alarm or when notification permission is absent.
 4. Commit all source, the Gradle wrapper, font licenses and Fastlane metadata. Create
-   the actual `v0.6.0` release tag. Do not tag a build that still has unresolved failures.
+   the actual `v0.7.0` release tag. Do not tag a build that still has unresolved failures.
 5. Copy `metadata-template.yml` into F-Droid Data's metadata directory with the package
    name. Replace the marked repository fields with your real public URLs.
 6. Validate using F-Droid's tools and submit a merge request to F-Droid Data following

@@ -1,0 +1,23 @@
+{
+  "version": "0.7.0",
+  "fdroidserver": "2.4.5",
+  "fatalProblems": 0,
+  "messages": {
+    "infos": [
+      [
+        "Removing gradlew at gradlew",
+        "gradlew"
+      ],
+      [
+        "Removing gradlew.bat at gradlew.bat",
+        "gradlew.bat"
+      ],
+      [
+        "Removing gradle-wrapper.jar at gradle/wrapper/gradle-wrapper.jar",
+        "gradle/wrapper/gradle-wrapper.jar"
+      ]
+    ],
+    "warnings": [],
+    "errors": []
+  }
+}

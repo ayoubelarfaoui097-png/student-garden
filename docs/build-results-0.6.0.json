@@ -1,0 +1,144 @@
+{
+  "version": "0.6.0",
+  "versionCode": 6,
+  "date": "2026-10-18",
+  "command": "./tools/build-local.sh --offline --no-daemon --no-parallel --max-workers=2 -Pkotlin.compiler.execution.strategy=in-process testDebugUnitTest lintDebug assembleDebug assembleRelease",
+  "build": "SUCCESS",
+  "tests": [
+    {
+      "name": "com.jdinohaila.studentgarden.ActivityLaunchTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.jdinohaila.studentgarden.AgendaColorTest",
+      "tests": "7",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.jdinohaila.studentgarden.BackupTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.jdinohaila.studentgarden.DeletionSnackbarTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.jdinohaila.studentgarden.FontRenderingTest",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.jdinohaila.studentgarden.LessonReminderTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.jdinohaila.studentgarden.MobileUiTest",
+      "tests": "25",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.jdinohaila.studentgarden.NoteDocumentTest",
+      "tests": "7",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.jdinohaila.studentgarden.NoteEditorUiTest",
+      "tests": "8",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.jdinohaila.studentgarden.RecordingUiTest",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.jdinohaila.studentgarden.RepositoryTest",
+      "tests": "12",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.jdinohaila.studentgarden.StudyRemindersTest",
+      "tests": "11",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.jdinohaila.studentgarden.StudyRulesTest",
+      "tests": "7",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    }
+  ],
+  "totalTests": 94,
+  "deviceTests": {
+    "runner": "AndroidJUnitRunner",
+    "tests": 1,
+    "failures": 0,
+    "seconds": 76.509,
+    "api": 35,
+    "categories": [
+      "lessons",
+      "tasks",
+      "agenda",
+      "cards",
+      "habits",
+      "focus"
+    ],
+    "evidence": "reminder-instrumentation-result.txt"
+  },
+  "lint": {
+    "Warning": 49
+  },
+  "lintWarningsById": {
+    "ApplySharedPref": 2,
+    "UnusedAttribute": 1,
+    "AndroidGradlePluginVersion": 1,
+    "GradleDependency": 7,
+    "NewerVersionAvailable": 5,
+    "PluralsCandidate": 1,
+    "ObsoleteSdkInt": 1,
+    "UnusedResources": 9,
+    "MonochromeLauncherIcon": 1,
+    "UseKtx": 21
+  },
+  "artifacts": [
+    {
+      "file": "student-garden-0.6.0-preview.apk",
+      "bytes": 24583873,
+      "sha256": "be589e1778a9013aa3e46947deae11dbfd118d7c265c67ee69b77b1f7523e3f0"
+    },
+    {
+      "file": "student-garden-0.6.0-release-unsigned.apk",
+      "bytes": 4813434,
+      "sha256": "6f5e3522aaecb137f687e2656514060a833e73e439e3f28f8af0fa170530ff14"
+    }
+  ]
+}

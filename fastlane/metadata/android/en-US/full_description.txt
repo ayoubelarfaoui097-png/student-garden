@@ -3,6 +3,7 @@ Keep your study work together on your device.
 • Choose a day in Agenda, set the session time, and give each study session its own color. Organize tasks and courses.
 • Write rich notes with bold, italic, headings, lists and editable tables. Undo formatting and table changes.
 • Study text, image and audio cards in separate decks. Record audio using your microphone with a visible recording timer and Stop control.
+• Review due cards in a shuffled order. Cards without a written question hide the empty question area and center the remaining content.
 • Reveal answers and choose a review interval: Again, Hard, Good, then 48 hours, 7 days, one month and Complete.
 • Schedule lesson reviews after 48 hours, 7 days, then one calendar month, with local reminder notifications.
 • Get local reminders for task deadlines, agenda starts, due flashcards and scheduled habits. Choose categories and a daily practice time, check permissions and send a test alert in Settings. Android power settings can delay reminders; force-stopping pauses them until reopening.

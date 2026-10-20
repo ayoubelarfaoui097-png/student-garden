@@ -1,0 +1,1 @@
+Flashcard review sessions now shuffle cards while keeping the current card stable. Cards without a question hide its empty area and separator, and the remaining content is vertically centered. Large content remains scrollable. Existing cards and review schedules are preserved.

@@ -292,10 +292,12 @@ class MobileUiTest {
         compose.onNodeWithTag("nav-3").performClick()
         compose.onNodeWithText("Biology foundations").performClick()
         compose.onNodeWithText("Review").performClick()
-        // This new card is due after the seeded card. Advance that first.
-        compose.onNodeWithText("Tap to reveal").performClick()
-        compose.onNodeWithText("48 hours").performClick()
-        compose.waitUntil(5000) { app.repository.state.value.cards.first { it.answer == "Mitochondrion" }.stage == 1 }
+        // Review order is shuffled: advance the other card only if it appears first.
+        if (compose.onAllNodesWithText("Name this color").fetchSemanticsNodes().isEmpty()) {
+            compose.onNodeWithText("Tap to reveal").performClick()
+            compose.onNodeWithText("48 hours").performClick()
+            compose.waitUntil(5000) { app.repository.state.value.cards.first { it.answer == "Mitochondrion" }.stage == 1 }
+        }
         compose.onNodeWithText("Blue").assertDoesNotExist()
         compose.onNodeWithText("Name this color").performClick()
         compose.onNodeWithText("Blue").assertIsDisplayed()

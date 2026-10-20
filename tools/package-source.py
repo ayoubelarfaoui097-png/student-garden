@@ -4,7 +4,7 @@ from pathlib import Path
 import zipfile
 
 root = Path(__file__).resolve().parent.parent
-output = root / "artifacts" / "student-garden-0.6.0-source.zip"
+output = root / "artifacts" / "student-garden-0.7.0-source.zip"
 output.parent.mkdir(exist_ok=True)
 allowed = [
     ".gitignore", "README.md", "LICENSE", "NOTICE", "PRIVACY.md", "CONTRIBUTING.md",

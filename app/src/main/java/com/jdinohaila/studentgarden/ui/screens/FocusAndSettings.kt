@@ -596,7 +596,7 @@ fun SettingsScreen(
                     )
                 Spacer(Modifier.height(24.dp))
                 Text(
-                    "Student Garden 0.6.0 · Apache-2.0",
+                    "Student Garden 0.7.0 · Apache-2.0",
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )

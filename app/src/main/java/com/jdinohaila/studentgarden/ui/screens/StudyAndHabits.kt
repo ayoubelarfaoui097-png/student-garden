@@ -21,6 +21,7 @@ import androidx.compose.ui.*
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.semantics.*
@@ -187,9 +188,15 @@ fun CardReview(
                     (deckId.isBlank() && s.decks.none { d -> d.id == it.deckId })) &&
                     (all || StudyRules.due(it, now))
             }
-            .sortedBy { it.dueAt }
-    var seen by rememberSaveable { mutableStateOf(listOf<String>()) }
-    val card = eligible.firstOrNull { !all || it.id !in seen }
+    var seen by rememberSaveable(deckId, all) { mutableStateOf(listOf<String>()) }
+    val available = eligible.filter { !all || it.id !in seen }
+    val availableIds = available.map { it.id }
+    var order by rememberSaveable(deckId, all) { mutableStateOf(reviewOrder(emptyList(), availableIds)) }
+    LaunchedEffect(availableIds, s.loaded) {
+        if (s.loaded) order = reviewOrder(order, availableIds)
+    }
+    val byId = available.associateBy { it.id }
+    val card = order.firstNotNullOfOrNull { byId[it] }
     var revealed by rememberSaveable(card?.id) { mutableStateOf(false) }
     var busy by remember { mutableStateOf(false) }
     Scaffold(
@@ -202,7 +209,9 @@ fun CardReview(
             )
         }
     ) { p ->
-        if (card == null)
+        if (!s.loaded || (card == null && available.isNotEmpty()))
+            Box(Modifier.fillMaxSize().padding(p), contentAlignment = Alignment.Center) { CircularProgressIndicator() }
+        else if (card == null)
             Column(
                 Modifier.fillMaxSize().padding(p).padding(24.dp),
                 verticalArrangement = Arrangement.Center,
@@ -249,35 +258,45 @@ fun CardReview(
                 )
                 Surface(
                     onClick = { revealed = !revealed },
-                    modifier = Modifier.fillMaxWidth().weight(1f),
+                    modifier = Modifier.fillMaxWidth().weight(1f).testTag("review-card"),
                     shape = RoundedCornerShape(20.dp),
                     border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant),
                     color = MaterialTheme.colorScheme.surface,
                 ) {
-                    AnimatedContent(revealed, label = "card reveal") { back ->
-                        Column(
-                            Modifier.fillMaxSize()
-                                .verticalScroll(rememberScrollState())
-                                .padding(24.dp),
-                            verticalArrangement = Arrangement.Center,
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                        ) {
-                            if (card.prompt.isNotBlank()) Text(card.prompt, style = MaterialTheme.typography.headlineMedium, modifier = Modifier.fillMaxWidth())
-                            if (back) {
-                                Spacer(Modifier.height(24.dp))
-                                HorizontalDivider()
-                                Spacer(Modifier.height(20.dp))
-                                Text(stringResource(R.string.answer), color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.fillMaxWidth())
-                                Spacer(Modifier.height(12.dp))
-                                Text(card.answer, style = MaterialTheme.typography.headlineSmall, modifier = Modifier.fillMaxWidth())
-                            }
-                            if (card.type == "image" && card.imageId != null) {
-                                Spacer(Modifier.height(24.dp))
-                                AsyncImage(media.file(card.imageId), card.prompt.ifBlank { null }, Modifier.fillMaxWidth().heightIn(max = 320.dp), contentScale = ContentScale.Fit)
-                            }
-                            if (card.audioId != null) {
-                                Spacer(Modifier.height(24.dp))
-                                AudioPlayer(media.file(card.audioId))
+                    BoxWithConstraints(Modifier.fillMaxSize()) {
+                        val viewportHeight = maxHeight
+                        AnimatedContent(revealed, modifier = Modifier.fillMaxSize(), label = "card reveal") { back ->
+                            Column(
+                                Modifier.fillMaxWidth()
+                                    .verticalScroll(rememberScrollState())
+                                    .heightIn(min = viewportHeight)
+                                    .padding(24.dp),
+                                verticalArrangement = Arrangement.Center,
+                                horizontalAlignment = Alignment.CenterHorizontally,
+                            ) {
+                                Column(Modifier.fillMaxWidth().testTag("review-content"), horizontalAlignment = Alignment.CenterHorizontally) {
+                                    val hasQuestion = card.prompt.isNotBlank()
+                                    val hasImage = card.type == "image" && card.imageId != null
+                                    if (hasQuestion) Text(card.prompt, style = MaterialTheme.typography.headlineMedium, modifier = Modifier.fillMaxWidth().testTag("review-question"))
+                                    if (back) {
+                                        if (hasQuestion) {
+                                            Spacer(Modifier.height(24.dp))
+                                            HorizontalDivider(Modifier.testTag("review-divider"))
+                                            Spacer(Modifier.height(20.dp))
+                                        }
+                                        Text(stringResource(R.string.answer), color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.fillMaxWidth())
+                                        Spacer(Modifier.height(12.dp))
+                                        Text(card.answer, style = MaterialTheme.typography.headlineSmall, modifier = Modifier.fillMaxWidth().testTag("review-answer"))
+                                    }
+                                    if (hasImage) {
+                                        if (hasQuestion || back) Spacer(Modifier.height(24.dp))
+                                        AsyncImage(media.file(card.imageId), card.prompt.ifBlank { null }, Modifier.fillMaxWidth().heightIn(max = 320.dp).testTag("review-image"), contentScale = ContentScale.Fit)
+                                    }
+                                    if (card.audioId != null) {
+                                        if (hasQuestion || back || hasImage) Spacer(Modifier.height(24.dp))
+                                        AudioPlayer(media.file(card.audioId))
+                                    }
+                                }
                             }
                         }
                     }
@@ -289,6 +308,7 @@ fun CardReview(
                             onAction {
                                 try {
                                     repo.rate(card, rating)
+                                    order = order.filterNot { it == card.id }
                                     seen = seen + card.id
                                     revealed = false
                                 } finally {
