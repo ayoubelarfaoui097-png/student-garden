@@ -1,0 +1,1 @@
+One notebook per video combines text, recordings and frame captures with timestamps. Existing notes merge with their content preserved. Faster repeat opens, cancellable search requests, pooled playback connections, adaptive quality and bounded recovery. Quality changes keep the same player and paused state. The player stays visible while reading notes.

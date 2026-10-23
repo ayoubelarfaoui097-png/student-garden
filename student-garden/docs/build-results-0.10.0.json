@@ -1,0 +1,32 @@
+{
+  "version": "0.10.0",
+  "versionCode": 10,
+  "date": "2026-10-22",
+  "build": "assembleDebug assembleRelease lintDebug testDebugUnitTest: BUILD SUCCESSFUL in 10m 23s",
+  "tests": {
+    "tests": 134,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "lint": {
+    "Warning": 66
+  },
+  "stringCountPerLocale": {
+    "values": 266,
+    "values-ar": 266,
+    "values-fr": 266,
+    "values-es": 266
+  },
+  "apks": {
+    "student-garden-0.10.0-preview.apk": {
+      "bytes": 31503626,
+      "sha256": "1ec4ef3e03f07d026f3e3c6c1b06efdc5425e6e933381f66d8cfebb4153f5de5"
+    },
+    "student-garden-0.10.0-release-unsigned.apk": {
+      "bytes": 6767568,
+      "sha256": "e7c03a378023c1861695d480f619a243c8553f352eaa47dcaa1c5d60e3dc9449"
+    }
+  },
+  "published": false
+}

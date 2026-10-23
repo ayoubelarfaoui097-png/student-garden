@@ -1,0 +1,6 @@
+Search channels and browse their videos.
+Video-first mixed search with playlist thumbnails and automatic pagination.
+Record timestamped voice notes and capture video frames into Notes.
+Simplify Video and Study navigation; keep tasks on Today.
+Add category-colored notifications and opt-in study-time reviews.
+Suppress stale and unexpected catch-up reminders.

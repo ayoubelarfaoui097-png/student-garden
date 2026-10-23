@@ -1,0 +1,43 @@
+{
+  "version": "0.8.0",
+  "versionCode": 8,
+  "date": "2026-10-22",
+  "build": "SUCCESS",
+  "command": "./tools/build-local.sh --no-daemon --max-workers=2 assembleDebug assembleRelease lintDebug testDebugUnitTest",
+  "tests": {
+    "tests": 110,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "lint": {
+    "errors": 0,
+    "warnings": 53
+  },
+  "artifacts": [
+    {
+      "file": "student-garden-0.8.0-preview.apk",
+      "bytes": 30198139,
+      "sha256": "3ef414363501dc939f7e906621cb3609941d9723167a61c9dbbadf15048760ec"
+    },
+    {
+      "file": "student-garden-0.8.0-release-unsigned.apk",
+      "bytes": 6647024,
+      "sha256": "1a1816ba6af773e334600926e29258c36acc6553813db623dad53fc982095ca1"
+    }
+  ],
+  "device": {
+    "api": 35,
+    "environment": "fresh isolated AOSP x86_64 QA emulator",
+    "upgradeFrom": "0.7.0",
+    "legacyRecordsUnchanged": 1,
+    "customLessonColor": "#8F3FBA",
+    "reviewDeadlineAndStagePreserved": true,
+    "videoId": "CMiPYHNNg28",
+    "videoResumePositionMillis": 366944,
+    "landscapeBottomNavigationAbsent": true,
+    "landscapeRailAbsent": true,
+    "landscapeSystemBarsHidden": true,
+    "optimizedReleaseSearchAndPlaybackVerified": true
+  }
+}

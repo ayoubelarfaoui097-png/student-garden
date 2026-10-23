@@ -1,0 +1,5 @@
+Live microphone waveforms for flashcard and note recordings.
+Record, import and play audio notes; include clips in backups.
+Search videos and playlists with relevance, date, duration and sorting filters.
+Browse playlist lessons and take timestamped video notes.
+Fix fullscreen Back returning to portrait and restore orientation on exit.

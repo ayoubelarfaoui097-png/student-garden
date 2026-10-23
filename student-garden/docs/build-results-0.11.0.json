@@ -1,0 +1,57 @@
+{
+  "version": "0.11.0",
+  "versionCode": 11,
+  "date": "2026-10-23",
+  "build": "assembleDebug assembleRelease assemblePreview lintDebug testDebugUnitTest: BUILD SUCCESSFUL in 9m 31s",
+  "tests": {
+    "tests": 146,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "lint": {
+    "Warning": 66
+  },
+  "stringCountPerLocale": {
+    "values": 271,
+    "values-ar": 271,
+    "values-fr": 271,
+    "values-es": 271
+  },
+  "sourceInputSha256": "232b06c20fcfe35dd8ee9fd466129f73146564a3023537b47228182e448731ac",
+  "apks": {
+    "student-garden-0.11.0-preview.apk": {
+      "bytes": 6766416,
+      "sha256": "477acb42074a0abe8e6fca743030f7b0ff739d9ba6c351a05f4873fd10827839"
+    },
+    "student-garden-0.11.0-release-unsigned.apk": {
+      "bytes": 6753880,
+      "sha256": "53b832371d811151dbc19390f0bcf0e6eb29c45b68d25b50937e6577b1e66a3b"
+    }
+  },
+  "preview": {
+    "applicationId": "com.jdinohaila.studentgarden.preview",
+    "debuggable": false,
+    "testOnly": false,
+    "minified": true,
+    "resourceShrunk": true,
+    "baselineProfilePresent": true,
+    "signatureMatchesPreviousPreview": true
+  },
+  "published": false,
+  "optimizedEmulatorPlayback": [
+    {
+      "attempt": "retry after initial catalog failure",
+      "firstFrameMillis": 16700,
+      "extractionMillis": 6795
+    },
+    {
+      "firstFrameMillis": 10430,
+      "extractionMillis": 7401
+    },
+    {
+      "firstFrameMillis": 4972,
+      "extractionMillis": 13
+    }
+  ]
+}

@@ -1,22 +1,24 @@
-# Template only: supply actual public source URLs and create the release tag.
 Categories:
-  - Calendar & Agenda
-  - Note
   - Science & Education
+  - Time
 License: Apache-2.0
-SourceCode: REPLACE_WITH_PUBLIC_REPOSITORY_URL
-IssueTracker: REPLACE_WITH_PUBLIC_ISSUE_TRACKER_URL
-RepoType: git
-Repo: REPLACE_WITH_PUBLIC_GIT_CLONE_URL
+SourceCode: https://github.com/ayoubelarfaoui097-png/student-garden
+IssueTracker: https://github.com/ayoubelarfaoui097-png/student-garden/issues
+
 AutoName: Student Garden
+
+RepoType: git
+Repo: https://github.com/ayoubelarfaoui097-png/student-garden.git
+
 Builds:
-  - versionName: 0.7.0
-    versionCode: 7
-    commit: v0.7.0
+  - versionName: 0.11.0
+    versionCode: 11
+    commit: v0.11.0
     subdir: app
     gradle:
       - yes
-AutoUpdateMode: None
+
+AutoUpdateMode: Version
 UpdateCheckMode: Tags
-CurrentVersion: 0.7.0
-CurrentVersionCode: 7
+CurrentVersion: 0.11.0
+CurrentVersionCode: 11

@@ -1,0 +1,23 @@
+# Template only: supply actual public source URLs and create the release tag.
+Categories:
+  - Calendar & Agenda
+  - Note
+  - Science & Education
+License: GPL-3.0-or-later
+SourceCode: REPLACE_WITH_PUBLIC_REPOSITORY_URL
+IssueTracker: REPLACE_WITH_PUBLIC_ISSUE_TRACKER_URL
+RepoType: git
+Repo: REPLACE_WITH_PUBLIC_GIT_CLONE_URL
+AutoName: Student Garden
+Builds:
+  - versionName: 0.11.0
+    versionCode: 11
+    commit: v0.11.0
+    disable: Unreleased development build; publish the matching tag after verification
+    subdir: app
+    gradle:
+      - yes
+AutoUpdateMode: None
+UpdateCheckMode: Tags
+CurrentVersion: 0.11.0
+CurrentVersionCode: 11

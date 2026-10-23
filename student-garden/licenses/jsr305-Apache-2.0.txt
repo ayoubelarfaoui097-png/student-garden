@@ -1,0 +1,4 @@
+JSR-305 annotations 3.0.2
+License declared by the published Maven POM: Apache License 2.0.
+See Apache-2.0.txt for the full license.
+Source and artifact metadata: https://repo.maven.apache.org/maven2/com/google/code/findbugs/jsr305/3.0.2/
