@@ -1,0 +1,46 @@
+{
+  "version": "0.12.0",
+  "versionCode": 12,
+  "date": "2026-10-25",
+  "sourceInputsSha256": "ee912f900d3e4dd64284e7a441e0c4b4d50cd9a0d61650e85e71fd7a9b5cfb9e",
+  "tests": {
+    "tests": 154,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "lint": {
+    "Error": 0,
+    "Warning": 60
+  },
+  "nativePdfTest": {
+    "device": "task-created AOSP API 35 emulator",
+    "tests": 1,
+    "failures": 0
+  },
+  "finalBuilds": {
+    "allApksAndTestsLint": "BUILD SUCCESSFUL in 4m 39s",
+    "lastUnitAndLintRun": "BUILD SUCCESSFUL in 1m 16s"
+  },
+  "preview": {
+    "debuggable": false,
+    "certificateSha256": "aafd3b3bb8b582ef393bdc84ea3fa186de43967cbe3e6963c68e69202a1b0835",
+    "matchesVersion11": true
+  },
+  "artifacts": {
+    "student-garden-0.12.0-preview.apk": {
+      "bytes": 6804912,
+      "sha256": "914f0147a7f4dbe8afba3efead2a90140b7976c41596b5394587a6373a830c66"
+    },
+    "student-garden-0.12.0-release-unsigned.apk": {
+      "bytes": 6792376,
+      "sha256": "93cee380df5da9d1595e2b621b24bf9852b301160b9d920fa8f48b99920a8c4a"
+    }
+  },
+  "exports": {
+    "nativePdfTestPassed": true,
+    "shortLinesPreservedPerFormat": 80,
+    "repeatedSentenceKeyWordsPreservedPerFormat": 100,
+    "renderedSlides": 23
+  }
+}

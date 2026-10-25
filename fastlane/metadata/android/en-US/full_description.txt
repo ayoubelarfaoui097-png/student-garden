@@ -1,0 +1,13 @@
+Student Garden keeps your study work on your Android device.
+
+Plan from Today, organize an agenda, write rich notes with tables, review flashcards and lessons, and track habits. Study records work offline without an account.
+
+The optional Video section searches YouTube videos, playlists and channels through NewPipeExtractor. Video results appear first, with relevant playlist and creator suggestions. Filter searches, browse channels and playlists, and keep scrolling to load more. Save lessons and resume later.
+
+Write timestamped text notes or capture a video frame in portrait or landscape fullscreen. Capture keeps playback running, and its control hides with the player controls. Images remain local and are included in backups. Export text and frames as PDF, Word or PowerPoint.
+
+Notifications use actual task and agenda times. Daily lesson, card and habit reviews are opt-in and use your chosen study time. Missed daily reminders do not fire unexpectedly when opening the app.
+
+English, Arabic, French and Spanish. Light and dark themes. No analytics, advertising SDKs, required accounts or cloud sync. Optional device lock and manual backup/restore. Android 8.0 or newer.
+
+Video notebooks combine text and captured frames with timestamp links, separate from Study notes. Earlier recordings remain playable. Playback starts with adaptive quality up to 720p, with Auto and higher qualities available.

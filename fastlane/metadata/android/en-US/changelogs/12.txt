@@ -1,0 +1,1 @@
+Video notebooks now live in Video, separate from Study notes. Capture frames in landscape fullscreen without pausing; capture controls hide with the player controls. Frame timestamps and remove buttons use transparent backgrounds. Export text and images as PDF, Word or PowerPoint. Fixed optimized-build playlist loading. Existing notes and recordings remain compatible.
